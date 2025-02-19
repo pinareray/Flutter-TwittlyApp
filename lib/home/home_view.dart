@@ -1,111 +1,39 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'tabbar_view.dart';
 
 class HomeView extends StatefulWidget {
-  const HomeView({super.key});
+  const HomeView(this.controller);
+
+  final ScrollController controller;
 
   @override
   State<HomeView> createState() => _HomeViewState();
 }
 
 class _HomeViewState extends State<HomeView> {
-  String _photoUrl = "https://randomuser.me/api/portraits/men/1.jpg";
-  int defaultTabLength = 4;
-  late ScrollController scrollController;
   String _randomImage = "https://picsum.photos/200/300";
   String fakeMessage = "When you realize how precious and fragile life is, it changes your whole perspective.";
   bool isHeaderClose = false;
   double lastOffset = 0;
 
-  @override
-  void initState() {
-    super.initState();
-    scrollController = ScrollController();
-
-    scrollController.addListener(() {
-      if (scrollController.offset <= 0) {
-        isHeaderClose = false;
-      } else {
-        isHeaderClose = scrollController.offset > lastOffset ? true : false;
-      }
-      setState(() {
-        lastOffset = scrollController.offset;
-      });
-    });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    scrollController.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: _fabButton,
-      body: SafeArea(
-        child: DefaultTabController(
-          length: defaultTabLength,
-          child: Column(
-            children: [
-              _containerAppbar,
-              _tabbarItems,
-              _expandedListView,
-            ],
-          ),
-        ),
-      ),
+      body:_listView,
     );
   }
 
   Widget get _fabButton => FloatingActionButton(
         onPressed: () {},
-        child: const Icon(Icons.send),
+        child: const Icon(Icons.post_add),
       );
-
-  Widget get _appBar => AppBar(
-        elevation: 0,
-        centerTitle: false,
-        title: _appBarItems,
-      );
-
-  Widget get _containerAppbar => AnimatedContainer(
-        duration: Duration(milliseconds: 300),
-        height: isHeaderClose ? 0 : 50,
-        child: _appBar,
-      );
-
-  Widget get _appBarItems => Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          CircleAvatar(backgroundImage: NetworkImage(_photoUrl)),
-          SizedBox(width: 10),
-          Text("Home", style: titleTextStyle),
-        ],
-      );
-
-  Widget get _tabbarItems => const TabBar(tabs: <Widget>[
-        Tab(
-          icon: Icon(Icons.home),
-        ),
-        Tab(
-          icon: Icon(Icons.search),
-        ),
-        Tab(
-          icon: Icon(Icons.notifications),
-        ),
-        Tab(
-          icon: Icon(Icons.message),
-        ),
-      ]);
-
-  Widget get _expandedListView => Expanded(child: _listView);
 
   Widget get _listView => ListView.builder(
         itemCount: 10,
-        controller: scrollController,
+        controller: widget.controller,
         itemBuilder: (context, index) {
           return _listViewCard;
         },
@@ -174,9 +102,3 @@ class _HomeViewState extends State<HomeView> {
         onTap: () {},
       );
 }
-
-final titleTextStyle = TextStyle(
-  fontSize: 20,
-  fontWeight: FontWeight.w800,
-  color: Colors.black,
-);
