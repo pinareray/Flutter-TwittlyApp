@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_twittly_app/home/notifications_view.dart';
 
 import 'home_view.dart';
 import 'search_view.dart';
@@ -66,7 +67,7 @@ class _TwitterTabbarViewState extends State<TwitterTabbarView> {
           children: <Widget>[
             HomeView(scrollController),
             SearchView(scrollController),
-            const Text("asdasd"),
+            TwitterNotification(),
             const Text("asdasd"),
           ],
         ),
@@ -138,8 +139,8 @@ class _TwitterTabbarViewState extends State<TwitterTabbarView> {
         tabs: const <Widget>[
           Tab(icon: Icon(Icons.home)),
           Tab(icon: Icon(Icons.search)),
+          Tab(icon: Icon(Icons.notifications)),
           Tab(icon: Icon(Icons.message)),
-          Tab(icon: Icon(Icons.person)),
         ],
       );
 }

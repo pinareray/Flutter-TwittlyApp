@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         appBarTheme: 
           AppBarTheme(color: Theme.of(context).scaffoldBackgroundColor),
         tabBarTheme: const TabBarTheme(labelColor: CupertinoColors.systemPink,
-         unselectedLabelColor:CupertinoColors.systemGrey)
+        unselectedLabelColor:CupertinoColors.systemGrey)
         ),
     );
   }

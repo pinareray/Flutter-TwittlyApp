@@ -28,7 +28,7 @@ class _HomeViewState extends State<HomeView> {
 
   Widget get _fabButton => FloatingActionButton(
         onPressed: () {},
-        child: const Icon(Icons.post_add),
+        child: const Icon(Icons.add),
       );
 
   Widget get _listView => ListView.builder(
@@ -80,7 +80,7 @@ class _HomeViewState extends State<HomeView> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _iconLabelButton,
-          _iconLabelButton,
+          _iconLabelButton2,
           _iconLabelButton,
           _iconLabelButton
         ],
@@ -89,7 +89,7 @@ class _HomeViewState extends State<HomeView> {
   Widget _iconLabel(String text) => Wrap(
         spacing: 5,
         children: [
-          Icon(
+        const Icon(
             Icons.favorite,
             color: CupertinoColors.inactiveGray,
           ),
@@ -97,8 +97,19 @@ class _HomeViewState extends State<HomeView> {
         ],
       );
 
+  Widget _iconLabel2(String text1) => Wrap(
+    spacing: 5,
+    children: [const Icon(Icons.comment, color: Colors.grey,),
+    Text(text1)],
+  );
+
   Widget get _iconLabelButton => InkWell(
         child: _iconLabel("1"),
+        onTap: () {},
+      );
+
+   Widget get _iconLabelButton2 => InkWell(
+        child: _iconLabel2("1"), 
         onTap: () {},
       );
 }
