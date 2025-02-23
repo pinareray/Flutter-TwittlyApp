@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_twittly_app/home/message_screen_view.dart';
 import 'package:flutter_twittly_app/home/notifications_view.dart';
 
 import 'home_view.dart';
@@ -68,13 +69,13 @@ class _TwitterTabbarViewState extends State<TwitterTabbarView> {
             HomeView(scrollController),
             SearchView(scrollController),
             TwitterNotification(),
-            const Text("asdasd"),
+            MessageScreenView(),
           ],
         ),
       );
 
   Widget get _bottomAppBar => BottomAppBar(
-        shape:const CircularNotchedRectangle(),
+        shape: const CircularNotchedRectangle(),
         child: _tabbarItems,
       );
 
@@ -96,20 +97,37 @@ class _TwitterTabbarViewState extends State<TwitterTabbarView> {
           _emptyWidht,
           Expanded(child: _centerAppBarWidget),
           _emptyWidht,
-          const Icon(
-            Icons.settings,
-            color: Colors.blue,
-          )
+          _centerAppbarIcon,
         ],
       );
+
+  Widget get _centerAppbarIcon {
+    return currentIndex == 2
+        ? const Icon(Icons.more_vert, color: Colors.blue)
+        : const Icon(Icons.settings, color: Colors.blue);
+  }
 
   Widget get _emptyWidht => const SizedBox(
         width: 20,
       );
 
-  Widget get _centerAppBarWidget => currentIndex == 1
-      ? _searchTextField
-      : Text("Home", style: titleTextStyle);
+  Widget get _searchMessageScreen => TextField(
+        maxLines: 1,
+        decoration: InputDecoration(
+            contentPadding: EdgeInsets.all(5),
+            hintText: "Direkt mesajlarda ara",
+            filled: true,
+            focusedBorder: outlineInputBorder,
+            border: outlineInputBorder),
+      );
+
+  Widget get _centerAppBarWidget => currentIndex == 3
+      ? _searchMessageScreen
+      : currentIndex == 2
+          ? Text("Bildirimler", style: titleTextStyle)
+          : currentIndex == 1
+              ? _searchTextField
+              : Text("Home", style: titleTextStyle);
 
   Widget get _searchTextField => TextField(
       maxLines: 1,

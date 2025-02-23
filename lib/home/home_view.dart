@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_twittly_app/widgets/post_button.dart';
 import 'tabbar_view.dart';
 
 class HomeView extends StatefulWidget {
@@ -13,16 +14,16 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   String _randomImage = "https://picsum.photos/200/300";
-  String fakeMessage = "When you realize how precious and fragile life is, it changes your whole perspective.";
+  String fakeMessage =
+      "When you realize how precious and fragile life is, it changes your whole perspective.";
   bool isHeaderClose = false;
   double lastOffset = 0;
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: _fabButton,
-      body:_listView,
+      body: _listView,
     );
   }
 
@@ -39,32 +40,31 @@ class _HomeViewState extends State<HomeView> {
         },
       );
 
- Widget get _listViewCard => Card(
-  child: ListTile(
-    contentPadding: EdgeInsets.all(8),
-    title: Row(
-      children: [
-        CircleAvatar(
-          backgroundImage: NetworkImage(_randomImage),
-          radius: 20,
+  Widget get _listViewCard => Card(
+        child: ListTile(
+          contentPadding: EdgeInsets.all(8),
+          title: Row(
+            children: [
+              CircleAvatar(
+                backgroundImage: NetworkImage(_randomImage),
+                radius: 20,
+              ),
+              SizedBox(width: 10),
+              Text("@niemand", style: titleTextStyle),
+            ],
+          ),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 8),
+              Text(fakeMessage),
+              SizedBox(height: 10),
+              _placeHolderField,
+              _textButtonList,
+            ],
+          ),
         ),
-        SizedBox(width: 10),
-        Text("@niemand", style: titleTextStyle),
-      ],
-    ),
-    subtitle: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(height: 8),
-        Text(fakeMessage),
-        SizedBox(height: 10),
-        _placeHolderField,
-        _textButtonList,
-      ],
-    ),
-  ),
-);
-
+      );
 
   Widget _listCardTitle(String text) => Text(
         text,
@@ -79,37 +79,10 @@ class _HomeViewState extends State<HomeView> {
   Widget get _textButtonList => Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _iconLabelButton,
-          _iconLabelButton2,
-          _iconLabelButton,
-          _iconLabelButton
+          PostButton(icon: Icons.favorite, count: "15", onPressed: () {}),
+          PostButton(icon: Icons.comment, count: "20", onPressed: () {}),
+          PostButton(icon: Icons.repeat, count: "25", onPressed: () {}),
+          PostButton(icon: Icons.share, count: "30", onPressed: () {}),
         ],
-      );
-
-  Widget _iconLabel(String text) => Wrap(
-        spacing: 5,
-        children: [
-        const Icon(
-            Icons.favorite,
-            color: CupertinoColors.inactiveGray,
-          ),
-          Text(text),
-        ],
-      );
-
-  Widget _iconLabel2(String text1) => Wrap(
-    spacing: 5,
-    children: [const Icon(Icons.comment, color: Colors.grey,),
-    Text(text1)],
-  );
-
-  Widget get _iconLabelButton => InkWell(
-        child: _iconLabel("1"),
-        onTap: () {},
-      );
-
-   Widget get _iconLabelButton2 => InkWell(
-        child: _iconLabel2("1"), 
-        onTap: () {},
       );
 }
