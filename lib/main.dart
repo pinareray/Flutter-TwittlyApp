@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_twittly_app/home/login_screen.dart';
+import 'package:flutter_twittly_app/home/splash_screen.dart';
 
 import 'package:flutter_twittly_app/home/tabbar_view.dart';
 
@@ -12,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Material App',
-      home: TwitterTabbarView(),
+      home: LoginScreen(),
       theme: ThemeData.light().copyWith(
         appBarTheme:
             AppBarTheme(color: Theme.of(context).scaffoldBackgroundColor),

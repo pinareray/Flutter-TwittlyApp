@@ -23,7 +23,7 @@ class __TwitterNotificationStateState extends State<TwitterNotification> {
       body: Column(
         children: [
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 10),
+            padding: const EdgeInsets.symmetric(vertical: 50),
             color: Colors.grey[200],
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,

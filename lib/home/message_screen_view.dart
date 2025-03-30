@@ -39,7 +39,7 @@ class _MessageScreenViewState extends State<MessageScreenView> {
                 radius: 20,
               ),
               SizedBox(width: 10),
-              Text("@alp")
+              Text("@users")
             ],
           ),
           subtitle: Column(
