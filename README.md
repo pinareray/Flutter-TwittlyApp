@@ -17,4 +17,5 @@ A new Flutter project.TwittlyApp, Flutter kullanılarak geliştirilmiş modern b
 - Firebase (Auth & Firestore - opsiyonel)
 
   
-![Uploading image.png…]()
+![TwittlyApp Ekran Görüntüsü](assets/twittlyapp.png)
+
