@@ -1,16 +1,20 @@
 # flutter_twittly_app
 
-A new Flutter project.
+A new Flutter project.TwittlyApp, Flutter kullanılarak geliştirilmiş modern bir Twitter klonudur. Kullanıcılar tweet paylaşabilir, diğer tweet’leri görüntüleyebilir ve sade, kullanıcı dostu bir arayüzle sosyal etkileşimde bulunabilir.
 
-## Getting Started
+## 🚀 Özellikler
+- 📝 Tweet gönderme
+- 🗂 Tweet akışı (ana sayfa)
+- 👤 Kullanıcı profili ekranı
+- 📱 Responsive tasarım
+- ☁️ Firebase entegrasyonu (geliştirme aşamasında)
+  
 
-This project is a starting point for a Flutter application.
+  ## 🛠 Kullanılan Teknolojiler
+- [Flutter](https://flutter.dev/)
+- [Dart](https://dart.dev/)
+- [Provider](https://pub.dev/packages/provider) (State management)
+- Firebase (Auth & Firestore - opsiyonel)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  
+![Uploading image.png…]()
